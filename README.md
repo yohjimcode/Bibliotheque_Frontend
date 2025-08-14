@@ -1,5 +1,7 @@
 # Bibliotheque
 
+Design inspiré de : https://dribbble.com/shots/22727127-Library-Website 
+
 This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.0.7.
 
 ## Development server
