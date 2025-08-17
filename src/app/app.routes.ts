@@ -1,19 +1,19 @@
 import { Routes } from '@angular/router';
-import { ContactComponent } from './contact/contact/contact.component';
-import { HomeComponent } from './home/home/home.component';
-import { BibliothequeComponent } from './bibliotheque/bibliotheque/bibliotheque.component';
+import { BibliothequeComponent } from './pages/bibliotheque/bibliotheque.component';
+import { ContactComponent } from './pages/contact/contact.component';
+import { HomeComponent } from './pages/home/home.component';
+import { LivresComponent } from './pages/livres/livres.component';
+
+
 
 export const routes: Routes = [
     { path: 'home', title: 'Home', component: HomeComponent },
-    { path: 'contact', title: 'Contact', component: ContactComponent },
+    { path: 'livres', title: 'Livres', component: LivresComponent },
     { path: 'bibliotheque', title: 'Bibliotheque', component: BibliothequeComponent },
-
+    { path: 'contact', title: 'Contact', component: ContactComponent },
     { path: '', redirectTo: '/home', pathMatch: 'full' },
     { path: '**', redirectTo: '/home' },
 ];
-
-
-
 
 /*
     ajouter la route dans app.routes.ts 

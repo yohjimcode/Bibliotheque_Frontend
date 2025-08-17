@@ -3,7 +3,7 @@ import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-bibliotheque',
-  imports: [RouterLink],
+  imports: [],
   templateUrl: './bibliotheque.component.html',
   styleUrl: './bibliotheque.component.scss'
 })

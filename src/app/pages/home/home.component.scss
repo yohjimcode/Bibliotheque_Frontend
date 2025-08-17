@@ -1,0 +1,14 @@
+.body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center; 
+  align-items: center;   
+  height: 100vh;           
+  text-align: center;
+}
+
+.body p {
+  margin: 5px 0; 
+  font-size: 7rem; 
+  color : rgb(172, 247, 247);
+}

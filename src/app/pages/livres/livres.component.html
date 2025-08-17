@@ -1,0 +1,6 @@
+<h2>Liste des livres</h2>
+<ul>
+  <li *ngFor="let livre of livres">
+    <strong>{{ livre.titre }}</strong> - Auteur : {{ livre.auteur.nom }} {{ livre.auteur.prenom }} - prix : {{livre.prix}}
+  </li>
+</ul>
