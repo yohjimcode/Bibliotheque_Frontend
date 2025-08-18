@@ -1,6 +1,24 @@
-<h2>Liste des livres</h2>
-<ul>
-  <li *ngFor="let livre of livres">
-    <strong>{{ livre.titre }}</strong> - Auteur : {{ livre.auteur.nom }} {{ livre.auteur.prenom }} - prix : {{livre.prix}}
-  </li>
-</ul>
+<!-- faire un champs de recherche -->
+
+<h1>Mes livres</h1>
+
+<div class="body">
+  <div class="livre" *ngFor="let livre of livres">
+    <strong>{{ livre.titre }}</strong>
+    <br>
+    Auteur : {{ livre.auteur.nom }} {{ livre.auteur.prenom }}
+    <br>
+    Prix : {{ livre.prix }} € <!-- formatter le montant pour qu'il soit à 2 décimales -->
+  </div>
+</div>
+
+<!--pagination-->
+
+
+<!-- <mat-form-field appearance="outline">
+  <mat-label>Rechercher un livre</mat-label>
+  <input matInput placeholder="Titre ou auteur" [(ngModel)]="searchText">
+  <button mat-button *ngIf="searchText" matSuffix mat-icon-button aria-label="Clear" (click)="searchText=''">
+    <mat-icon>close</mat-icon>
+  </button>
+</mat-form-field> -->
