@@ -2,8 +2,18 @@
 
 <h1>Mes livres</h1>
 
+<div class="search">
+  <mat-form-field appearance="fill">
+    <mat-label>Recherche</mat-label>
+    <input matInput placeholder="Recherchez un livre..." [(ngModel)]="zoneRecherche">
+    <button *ngIf="zoneRecherche" matSuffix mat-icon-button aria-label="reset" (click)="zoneRecherche=''">
+      <mat-icon>close</mat-icon>
+    </button>
+  </mat-form-field>
+</div>
+
 <div class="body">
-  <div class="livre" *ngFor="let livre of livres">
+  <div class="livre" *ngFor="let livre of livresFiltres">
     <strong>{{ livre.titre }}</strong>
     <br>
     Auteur : {{ livre.auteur.nom }} {{ livre.auteur.prenom }}
