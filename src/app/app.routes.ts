@@ -3,6 +3,7 @@ import { BibliothequeComponent } from './pages/bibliotheque/bibliotheque.compone
 import { ContactComponent } from './pages/contact/contact.component';
 import { HomeComponent } from './pages/home/home.component';
 import { LivresComponent } from './pages/livres/livres.component';
+import { AuthentificationComponent } from './features/authentification/authentification.component';
 
 
 
@@ -11,6 +12,7 @@ export const routes: Routes = [
     { path: 'livres', title: 'Livres', component: LivresComponent },
     { path: 'bibliotheque', title: 'Bibliotheque', component: BibliothequeComponent },
     { path: 'contact', title: 'Contact', component: ContactComponent },
+    { path: 'authentification', title: 'authentification', component: AuthentificationComponent },
     { path: '', redirectTo: '/home', pathMatch: 'full' },
     { path: '**', redirectTo: '/home' },
 ];

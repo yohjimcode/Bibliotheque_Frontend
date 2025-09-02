@@ -6,15 +6,19 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
 import { FormsModule } from '@angular/forms';
+import { MatButtonModule } from '@angular/material/button';
+import { MatDialog } from '@angular/material/dialog';
+import { ModaleComponent } from './modale/modale.component';
 
 @Component({
   selector: 'app-livres',
   imports: [
-    CommonModule,     
+    CommonModule,
     MatFormFieldModule,
     MatInputModule,
     MatIconModule,
-    FormsModule
+    FormsModule,
+    MatButtonModule
   ],
   templateUrl: './livres.component.html',
   styleUrl: './livres.component.scss'
@@ -22,8 +26,11 @@ import { FormsModule } from '@angular/forms';
 export class LivresComponent implements OnInit {
 
   livres: Livre[] = [];
+  livre!: Livre;
 
-  constructor(private livresService: LivresService) { }
+  constructor(private livresService: LivresService, 
+    private dialog: MatDialog, 
+  ) { }
 
   ngOnInit(): void {
     this.livresService.getAllLivres().subscribe(data => {
@@ -33,6 +40,7 @@ export class LivresComponent implements OnInit {
 
   zoneRecherche: string = '';
 
+  //Faire la recherche coté back !  
   get livresFiltres(): Livre[] {
     return this.livres.filter(livre =>
       livre.titre.toLowerCase().includes(this.zoneRecherche.toLowerCase()) ||
@@ -40,4 +48,8 @@ export class LivresComponent implements OnInit {
       livre.auteur.prenom.toLowerCase().includes(this.zoneRecherche.toLowerCase())
     );
   }
+
+  openDialog() {
+    this.dialog.open(ModaleComponent);
+}
 }

@@ -1,16 +1,19 @@
 <!-- faire un champs de recherche -->
 
-<h1>Mes livres</h1>
+<!-- <h1>Mes livres</h1> -->
 
 <div class="search">
   <mat-form-field appearance="fill">
     <mat-label>Recherche</mat-label>
     <input matInput placeholder="Recherchez un livre..." [(ngModel)]="zoneRecherche">
-    <button *ngIf="zoneRecherche" matSuffix mat-icon-button aria-label="reset" (click)="zoneRecherche=''">
-      <mat-icon>close</mat-icon>
-    </button>
   </mat-form-field>
+
+  <div class="button">
+    <button mat-flat-button color="primary" (click)="openDialog()">Ajouter livre</button>
+    <!-- <button mat-button (click)="openDialog()">Open dialog</button> -->
+  </div>
 </div>
+
 
 <div class="body">
   <div class="livre" *ngFor="let livre of livresFiltres">

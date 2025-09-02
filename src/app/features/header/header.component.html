@@ -1,22 +1,29 @@
 <mat-toolbar color="primary" class="header">
+
   <span class="leftTitle">
+    <div class="log">
+      <!-- mettre un logo  -->
+    </div>
+
+    @if(isConnected){
+    <a mat-button routerLink="authentification" routerLinkActive="active" (click)="disconnect()">Mon Compte</a>
+    }
+    @else {
+    <a mat-button routerLink="authentification" routerLinkActive="active" (click)="disconnect()">Se connecter</a>
+    }
+
+  </span>
+
+  <span class="centerTitle">
     <p>Ma bibliothèque</p>
   </span>
 
-  <!-- <div class="logo">
-      <img src=" ../../../../../../assets/logo.jpg" alt="logo"/>
-  </div> -->
+  <!--routerLinkActive -> pour le css, mise en éévidence du component actif-->
 
-  <nav class="centerTitle">
-    <!-- <a mat-button routerLink="accueil" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">Accueil</a>
-    <a mat-button routerLink="livres" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">Mes Livres</a>
-    <a mat-button routerLink="bibliotheque" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">Ma bibliothèque</a>
-    <a mat-button routerLink="contact" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">Contact</a> -->
-
-    <a mat-button routerLink="accueil">Accueil</a>
-    <a mat-button routerLink="livres">Mes Livres</a>
-    <a mat-button routerLink="bibliotheque">Ma bibliothèque</a>
-    <a mat-button routerLink="contact">Contact</a>
+  <nav class="rightTitle">
+    <a mat-button routerLink="home" routerLinkActive="active">Accueil</a>
+    <a mat-button routerLink="livres" routerLinkActive="active">Mes Livres</a>
+    <a mat-button routerLink="bibliotheque" routerLinkActive="active">Ma bibliothèque</a>
+    <a mat-button routerLink="contact" routerLinkActive="active">Contact</a>
   </nav>
 </mat-toolbar>
-

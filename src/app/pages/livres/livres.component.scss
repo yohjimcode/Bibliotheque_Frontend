@@ -4,13 +4,25 @@ h1{
 
 .search {
   display: flex;
-  justify-content: center;
+  align-items: stretch;   /* bouton et input même hauteur */
   margin: 20px 0;           
-  color : white;
+  color: white;
+  gap: 20px;
+}
 
-  mat-icon-button{
-    padding: 5px;
-  }
+.search mat-form-field {
+  width: 800px;                
+}
+
+.button button {
+  height: 100%;   /* prend la même hauteur que mat-form-field */
+}
+
+.button{
+  display: flex;
+  justify-content: space-between;
+  padding-left: 20px;
+  height: 56px !important; 
 }
 
 .search mat-form-field {

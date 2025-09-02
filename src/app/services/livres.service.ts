@@ -14,4 +14,8 @@ export class LivresService {
   getAllLivres(): Observable<Livre[]> {
     return this.http.get<Livre[]>(`${environment.apiUrl}/livres/all`);
   }
+
+  createLivre(livre:Livre){
+    return this.http.post<Livre>(`${environment.apiUrl}/livres`, livre);
+  }
 }
