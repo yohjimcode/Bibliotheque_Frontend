@@ -8,10 +8,10 @@
     <input matInput placeholder="Recherchez un livre..." [(ngModel)]="zoneRecherche">
   </mat-form-field>
 
-  <div class="button">
+  <!-- <div class="button">
     <button mat-flat-button color="primary" (click)="openDialog()">Ajouter livre</button>
-    <!-- <button mat-button (click)="openDialog()">Open dialog</button> -->
-  </div>
+    <button mat-button (click)="openDialog()">Open dialog</button> 
+  </div> -->
 </div>
 
 
@@ -19,7 +19,7 @@
   <div class="livre" *ngFor="let livre of livresFiltres">
     <strong>{{ livre.titre }}</strong>
     <br>
-    Auteur : {{ livre.auteur.nom }} {{ livre.auteur.prenom }}
+    Auteur(s) : {{ getNomsAuteurs(livre) }}
     <br>
     Prix : {{ livre.prix }} € <!-- formatter le montant pour qu'il soit à 2 décimales -->
   </div>

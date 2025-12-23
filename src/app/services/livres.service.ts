@@ -15,7 +15,20 @@ export class LivresService {
     return this.http.get<Livre[]>(`${environment.apiUrl}/livres/all`);
   }
 
-  createLivre(livre:Livre){
+  createLivre(livre:Livre): Observable<Livre>{
     return this.http.post<Livre>(`${environment.apiUrl}/livres`, livre);
+  }
+
+  rechercheLivreParIsbn(isbn: string): Observable<Livre> {
+    return this.http.get<Livre>(`${environment.apiUrl}/livres/info/${isbn}`);
+  }
+
+
+  createLivreParIsbn(livre:Livre): Observable<Livre>{
+    return this.http.post<Livre>(`${environment.apiUrl}/livres`, livre);
+  }
+
+  ajouterLivreDepuisIsbn(isbn: string): Observable<Livre> {
+    return this.http.post<Livre>(`${environment.apiUrl}/livres/depuis-isbn?isbn=${isbn}`, {});
   }
 }

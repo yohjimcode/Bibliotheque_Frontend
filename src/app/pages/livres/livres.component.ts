@@ -8,7 +8,6 @@ import { MatIconModule } from '@angular/material/icon';
 import { FormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDialog } from '@angular/material/dialog';
-import { ModaleComponent } from './modale/modale.component';
 
 @Component({
   selector: 'app-livres',
@@ -44,12 +43,14 @@ export class LivresComponent implements OnInit {
   get livresFiltres(): Livre[] {
     return this.livres.filter(livre =>
       livre.titre.toLowerCase().includes(this.zoneRecherche.toLowerCase()) ||
-      livre.auteur.nom.toLowerCase().includes(this.zoneRecherche.toLowerCase()) ||
-      livre.auteur.prenom.toLowerCase().includes(this.zoneRecherche.toLowerCase())
+      livre.auteurs?.some(auteur => 
+      auteur.nomAuteur.toLowerCase().includes(this.zoneRecherche.toLowerCase())
+      )
     );
   }
 
-  openDialog() {
-    this.dialog.open(ModaleComponent);
+  getNomsAuteurs(livre: Livre): string {
+  return livre.auteurs?.map(a => a.nomAuteur).join(', ') || 'Aucun auteur';
 }
+
 }

@@ -11,5 +11,5 @@ import { FooterComponent } from './features/footer/footer.component';
   styleUrl: './app.component.scss'
 })
 export class AppComponent {
-  title = 'Ma bibliothèque';
+  title = 'Livrarium';
 }

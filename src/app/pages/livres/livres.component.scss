@@ -5,6 +5,7 @@ h1{
 .search {
   display: flex;
   align-items: stretch;   /* bouton et input même hauteur */
+  justify-content: center;
   margin: 20px 0;           
   color: white;
   gap: 20px;
