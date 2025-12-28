@@ -1,29 +1,27 @@
-<mat-toolbar color="primary" class="header">
-
-  <span class="leftTitle">
-    <div class="log">
-      <!-- mettre un logo  -->
+<p-toolbar>
+  <ng-template #start>
+    <div class="logo">
+      <img src="Logo_Livrarium_black2.png" alt="Logo_Livrarium">
     </div>
+      <nav class="menu">
+        <ul>
+          <!--routerLinkActive -> pour le css, mise en évidence du component actif-->
+          <li><a routerLink="home" routerLinkActive="active">Accueil</a></li>
+          <li><a routerLink="livres" routerLinkActive="active">Mes Livres</a></li>
+          <li><a routerLink="bibliotheque" routerLinkActive="active">Ma bibliothèque</a></li>
+          <li><a routerLink="contact" routerLinkActive="active">Contact</a></li>
+        </ul>
+      </nav>
+  </ng-template>
 
-    @if(isConnected){
-    <a mat-button routerLink="authentification" routerLinkActive="active" (click)="disconnect()">Mon Compte</a>
-    }
-    @else {
-    <a mat-button routerLink="authentification" routerLinkActive="active" (click)="disconnect()">Se connecter</a>
-    }
-
-  </span>
-
-  <span class="centerTitle">
-    <p>Livrarium</p>
-  </span>
-
-  <!--routerLinkActive -> pour le css, mise en éévidence du component actif-->
-
-  <nav class="rightTitle">
-    <a mat-button routerLink="home" routerLinkActive="active">Accueil</a>
-    <a mat-button routerLink="livres" routerLinkActive="active">Mes Livres</a>
-    <a mat-button routerLink="bibliotheque" routerLinkActive="active">Ma bibliothèque</a>
-    <a mat-button routerLink="contact" routerLinkActive="active">Contact</a>
-  </nav>
-</mat-toolbar>
+  <ng-template #end>
+    <div class="searchBar">
+      <p-iconfield iconPosition="left">
+        <p-inputicon styleClass="pi pi-search"/>
+        <input type="search" pInputText placeholder="Rechercher" aria-label="Rechercher dans le site"
+          class="search-input" />
+      </p-iconfield>
+    </div>
+    <p-avatar image="https://primefaces.org/cdn/primeng/images/demo/avatar/asiyajavayant.png" [style]="{ width: '3.5rem', height: '3.5rem' }" />
+  </ng-template>
+</p-toolbar>

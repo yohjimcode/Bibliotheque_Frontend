@@ -1,9 +1,22 @@
 html, body {
   height: 100%;
   margin: 0;
-  font-family: 'Slumber Script', cursive;
 }
+
 app-root {
   height: 100%;
   background-color: black;
+}
+
+/* Styles globaux pour PrimeNG */
+.p-toolbar {
+  backdrop-filter: blur(10px);
+  --p-toolbar-background: rgba(0, 0, 0, 0.3);
+  --p-toolbar-border-color: transparent;
+}
+
+:root {
+  font-family: 'Inter', sans-serif;
+  /* ou */
+  font-family: 'Roboto', sans-serif;
 }

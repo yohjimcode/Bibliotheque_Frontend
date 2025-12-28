@@ -3,26 +3,40 @@
   height: 100vh;
   width: 100vw;
   overflow: hidden;
-  background: linear-gradient(135deg, #2c3e50, #34495e, #5d6d7e);
   position: relative;
 }
 
-.header {
+/* Overlay semi-transparent pour garantir le contraste du texte */
+:host::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: #fff;
+  z-index: 0;
+}
+
+header {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   z-index: 10;
-  background: transparent;
+  background: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(10px);
+  padding-top: 1rem;
 }
 
-.footer {
+footer {
   position: fixed;
   bottom: 0;
   left: 0;
   width: 100%;
   z-index: 10;
-  background: transparent;
+  background: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(10px);
   height: 32px;
   display: flex;
   justify-content: center;
@@ -37,13 +51,18 @@ main {
   text-align: center;
   position: relative;
   z-index: 1; 
-  padding-top: 70px;
+  padding: 6rem 1rem 32px; /* Padding responsive */
+
+  
+  /* Overlay pour améliorer la lisibilité du texte */
+  background-color: #000000; /* Fallback si l'image ne charge pas */
 }
 
+/* Assurez le contraste pour l'accessibilité */
 .body p {
   margin: 5px 0;
-  font-size: 8rem;
+  font-size: clamp(3rem, 8vw, 8rem); /* Taille responsive */
   color: white;
   font-weight: bold;
-  text-shadow: 2px 2px 8px rgba(0,0,0,0.5);
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8); /* Ombre plus forte pour la lisibilité */
 }

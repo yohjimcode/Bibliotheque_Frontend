@@ -1,12 +1,8 @@
 import { Component } from '@angular/core';
 import { LivresService } from '../../../services/livres.service';
-import { MatDialogModule, MatDialogRef } from '@angular/material/dialog';
 import { Livre } from '../../../models/livre.model';
-import { MatFormFieldModule } from '@angular/material/form-field';
 import { CommonModule } from '@angular/common';
 import { FormControl, FormGroup, FormsModule, Validators, ReactiveFormsModule } from '@angular/forms';
-import { MatButtonModule } from '@angular/material/button';
-import { MatInputModule } from '@angular/material/input';
 
 
 @Component({
@@ -14,10 +10,7 @@ import { MatInputModule } from '@angular/material/input';
   imports: [
     CommonModule,
     FormsModule,
-    MatFormFieldModule,
-    MatButtonModule, MatDialogModule,
     ReactiveFormsModule,
-    MatInputModule
 ],
   templateUrl: './modale.component.html',
   styleUrl: './modale.component.scss'
@@ -35,7 +28,7 @@ export class ModaleComponent {
 
   constructor(
     private livresService: LivresService,
-    private dialogRef: MatDialogRef<ModaleComponent>
+    // private dialogRef: MatDialogRef<ModaleComponent>
   ) { }
 
   protected readonly form = new FormGroup({
@@ -101,7 +94,7 @@ if (!this.livre) {
     next: (livreAjoute) => {
       console.log('Livre ajouté avec succès:', livreAjoute);
       // Fermer la modale en retournant le livre ajouté
-      this.dialogRef.close(livreAjoute);
+      // this.dialogRef.close(livreAjoute);
     },
     error: (err) => {
       console.error('Erreur lors de l\'ajout du livre:', err);

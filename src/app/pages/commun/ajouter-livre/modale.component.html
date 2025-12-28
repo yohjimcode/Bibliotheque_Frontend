@@ -1,7 +1,7 @@
-<h1 mat-dialog-title>Ajouter un livre</h1>
+<!-- <h1 mat-dialog-title>Ajouter un livre</h1> -->
 <form [formGroup]="form">
-  <div mat-dialog-content>
-    <mat-form-field>
+  <!-- <div mat-dialog-content> -->
+    <!-- <mat-form-field>
       <mat-label>Titre</mat-label>
       <input matInput id="titre" [readonly]="true" formControlName="titre"/>
     </mat-form-field>
@@ -10,21 +10,16 @@
       <mat-label>Auteur(s)</mat-label>
       <input matInput [value]="livre ? getNomsAuteurs(livre) : ''" readonly/>
     </mat-form-field>
-<!-- 
-    <mat-form-field>
-      <mat-label>prix</mat-label>
-      <input matInput id="prix" [readonly]="true" formControlName="prix"/>
-    </mat-form-field> -->
 
     <mat-form-field>
       <mat-label>isbn</mat-label>
       <input matInput id="isbn" formControlName="isbn"/>
-    </mat-form-field>
-  </div>
+    </mat-form-field> -->
+  <!-- </div> -->
 </form>
 
     <!-- Bouton pour rechercher l'ISBN -->
-    <button 
+    <!-- <button 
       mat-raised-button 
       color="primary" 
       (click)="getinfosLivre()" 
@@ -32,8 +27,8 @@
     >
       {{ loading ? 'Recherche...' : 'Rechercher' }}
     </button>
-    
-  <div mat-dialog-actions>
-    <button mat-button mat-dialog-close>Cancel</button>
-    <button mat-button [mat-dialog-close]="true" (click)="addLivre()">Ajouter livre</button>
-</div>
+     -->
+  <!-- <div mat-dialog-actions>
+    <button mat-button mat-dialog-close>Cancel</button> -->
+    <!-- <button mat-button [mat-dialog-close]="true" (click)="addLivre()">Ajouter livre</button> -->
+<!-- </div> -->
