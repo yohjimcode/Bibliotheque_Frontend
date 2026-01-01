@@ -11,16 +11,11 @@ import { FormControl, FormGroup, FormsModule, Validators, ReactiveFormsModule } 
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
-],
+  ],
   templateUrl: './modale.component.html',
   styleUrl: './modale.component.scss'
 })
 export class ModaleComponent {
-
-  
-    onSubmit() {
-      this.form.valid;
-    }
 
   livre!: Livre;
   loading: boolean = false;
@@ -37,19 +32,19 @@ export class ModaleComponent {
     isbn: new FormControl('', Validators.required),
   });
 
- /**
-   * Récupère les infos du livre via l'ISBN
-   */
+  /**
+    * Récupère les infos du livre via l'ISBN
+    */
   getinfosLivre() {
     const isbnControl = this.form.get('isbn');
-    
+
     if (!isbnControl?.valid) {
       this.error = 'Veuillez entrer un ISBN';
       return;
     }
 
     const isbn = isbnControl.value;
-    
+
     if (!isbn) {
       this.error = 'ISBN vide';
       return;
@@ -64,7 +59,7 @@ export class ModaleComponent {
         this.livre = livre;
         this.form.patchValue({
           titre: livre.titre,
-             auteur: livre.auteurs?.map(a => a.nomAuteur).join(', ') || ''
+          auteur: livre.auteurs?.map(a => a.nomAuteur).join(', ') || ''
         });
         this.loading = false;
       },
@@ -77,31 +72,35 @@ export class ModaleComponent {
     });
   }
 
-    // Pour afficher dans le template
-    getNomsAuteurs(livre: Livre): string {
-      return livre.auteurs?.map(a => a.nomAuteur).join(', ') || '';
-    }
-
-    addLivre() {
-if (!this.livre) {
-    this.error = 'Aucun livre à ajouter';
-    return;
+  // Pour afficher dans le template
+  getNomsAuteurs(livre: Livre): string {
+    return livre.auteurs?.map(a => a.nomAuteur).join(', ') || '';
   }
 
-  this.loading = true;
-
-  this.livresService.ajouterLivreDepuisIsbn(this.livre.isbn).subscribe({
-    next: (livreAjoute) => {
-      console.log('Livre ajouté avec succès:', livreAjoute);
-      // Fermer la modale en retournant le livre ajouté
-      // this.dialogRef.close(livreAjoute);
-    },
-    error: (err) => {
-      console.error('Erreur lors de l\'ajout du livre:', err);
-      this.error = 'Erreur lors de l\'ajout du livre';
-      this.loading = false;
+  addLivre() {
+    if (!this.livre) {
+      this.error = 'Aucun livre à ajouter';
+      return;
     }
-  });
-}
+
+    this.loading = true;
+
+    this.livresService.ajouterLivreDepuisIsbn(this.livre.isbn).subscribe({
+      next: (livreAjoute) => {
+        console.log('Livre ajouté avec succès:', livreAjoute);
+        // Fermer la modale en retournant le livre ajouté
+        // this.dialogRef.close(livreAjoute);
+      },
+      error: (err) => {
+        console.error('Erreur lors de l\'ajout du livre:', err);
+        this.error = 'Erreur lors de l\'ajout du livre';
+        this.loading = false;
+      }
+    });
+  }
+
+  onSubmit() {
+    this.form.valid;
+  }
 
 }

@@ -1,14 +1,21 @@
-.body {
-  display: flex;
-  flex-direction: column;
-  justify-content: center; 
-  align-items: center;   
-  height: 50vh;           
-  text-align: center;
+.book-carousel {
+  max-width: 100%;
+  margin: 0 auto;
 }
 
-.body p {
-  margin: 5px 0; 
-  font-size: 6rem; 
-  color : rgb(172, 247, 247);
+.book-card {
+  text-align: center;
+  --p-card-background: #000000; /* nouvelle couleur */
+}
+
+.book-cover {
+  width: 400px;
+  height: auto;
+  object-fit: cover;
+  border-radius: 6px;
+}
+
+.year {
+  margin-top: 0.5rem;
+  color: #e0e0e0;
 }

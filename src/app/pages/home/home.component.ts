@@ -1,20 +1,38 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ModaleComponent } from '../commun/ajouter-livre/modale.component';
+import { LivresService } from '../../services/livres.service';
+import { Subject, takeUntil } from 'rxjs';
+import { LivresTendances } from '../../models/livre.model';
+import { CardModule } from 'primeng/card';
+import { CarouselModule } from 'primeng/carousel';
 
 @Component({
   selector: 'app-home',
-  imports: [CommonModule],
+  imports: [CommonModule, CarouselModule,CardModule],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss'
 })
-export class HomeComponent {
+export class HomeComponent implements OnInit{
 
-  constructor() { }
+  private destroy = new Subject<void>();
+  livresTendances : LivresTendances[] =  []; 
 
+  constructor(private livreService:LivresService) { }
 
-  ajouterLivre() {
-    // this.dialog.open(ModaleComponent);
+  ngOnInit(): void {
+    this.afficherTendances();
   }
 
+  afficherTendances(){
+    this.livreService.getLivresTendancesParSemaine()
+    .pipe(takeUntil(this.destroy))
+    .subscribe(data => {
+      this.livresTendances = data;
+    })
+  } 
+
+  ngOnDestroy() {
+    this.destroy.next();
+    this.destroy.complete();
+  }
 }
