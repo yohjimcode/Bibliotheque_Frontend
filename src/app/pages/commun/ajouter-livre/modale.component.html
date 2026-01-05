@@ -1,34 +1,41 @@
-<!-- <h1 mat-dialog-title>Ajouter un livre</h1> -->
-<form [formGroup]="form">
-  <!-- <div mat-dialog-content> -->
-    <!-- <mat-form-field>
-      <mat-label>Titre</mat-label>
-      <input matInput id="titre" [readonly]="true" formControlName="titre"/>
-    </mat-form-field>
+<!-- <p-header>
+  Ajouter un livre
+</p-header> -->
 
-    <mat-form-field>
-      <mat-label>Auteur(s)</mat-label>
-      <input matInput [value]="livre ? getNomsAuteurs(livre) : ''" readonly/>
-    </mat-form-field>
+<form [formGroup]="form" class="p-fluid">
+  <!-- Titre -->
+  <div class="p-field">
+    <label for="titre">Titre</label>
+    <input id="titre" type="text" pInputText formControlName="titre" [readonly]="true" />
+  </div>
 
-    <mat-form-field>
-      <mat-label>isbn</mat-label>
-      <input matInput id="isbn" formControlName="isbn"/>
-    </mat-form-field> -->
-  <!-- </div> -->
-</form>
+  <!-- Auteur(s) -->
+  <div class="p-field">
+    <label for="auteur">Auteur(s)</label>
+    <input id="auteur" type="text" pInputText [value]="livre ? getNomsAuteurs(livre) : ''" readonly />
+  </div>
 
-    <!-- Bouton pour rechercher l'ISBN -->
-    <!-- <button 
-      mat-raised-button 
-      color="primary" 
-      (click)="getinfosLivre()" 
-      [disabled]="loading || !form.get('isbn')?.valid"
-    >
-      {{ loading ? 'Recherche...' : 'Rechercher' }}
+  <!-- ISBN -->
+  <div class="p-field">
+    <label for="isbn">ISBN</label>
+    <input id="isbn" type="text" pInputText formControlName="isbn"/>
+  </div>
+
+  <!-- Erreur -->
+  <p-message *ngIf="error" severity="error" text="{{ error }}"></p-message>
+
+<!-- Bouton recherche -->
+  <div class="p-d-flex p-jc-between p-mt-2">
+    <button pButton type="button" label="{{ loading ? 'Recherche...' : 'Rechercher' }}"
+            (click)="getinfosLivre()"
+            [disabled]="loading || !form.get('isbn')?.valid"
+            class="p-button-primary">
     </button>
-     -->
-  <!-- <div mat-dialog-actions>
-    <button mat-button mat-dialog-close>Cancel</button> -->
-    <!-- <button mat-button [mat-dialog-close]="true" (click)="addLivre()">Ajouter livre</button> -->
-<!-- </div> -->
+
+    <button pButton type="button" label="Ajouter livre"
+            (click)="addLivre()"
+            [disabled]="!livre || loading"
+            class="p-button-success">
+    </button>
+  </div>
+</form>

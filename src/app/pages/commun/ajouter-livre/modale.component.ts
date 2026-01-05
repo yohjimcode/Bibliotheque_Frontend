@@ -3,6 +3,10 @@ import { LivresService } from '../../../services/livres.service';
 import { Livre } from '../../../models/livre.model';
 import { CommonModule } from '@angular/common';
 import { FormControl, FormGroup, FormsModule, Validators, ReactiveFormsModule } from '@angular/forms';
+import { DynamicDialogRef } from 'primeng/dynamicdialog';
+import { MessageModule } from 'primeng/message';
+import { ButtonModule } from 'primeng/button';
+import { Subject, takeUntil } from 'rxjs';
 
 
 @Component({
@@ -11,6 +15,8 @@ import { FormControl, FormGroup, FormsModule, Validators, ReactiveFormsModule } 
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
+    MessageModule,
+    ButtonModule
   ],
   templateUrl: './modale.component.html',
   styleUrl: './modale.component.scss'
@@ -20,10 +26,11 @@ export class ModaleComponent {
   livre!: Livre;
   loading: boolean = false;
   error: string = '';
+  private destroy = new Subject<void>();
 
   constructor(
     private livresService: LivresService,
-    // private dialogRef: MatDialogRef<ModaleComponent>
+    public ref: DynamicDialogRef
   ) { }
 
   protected readonly form = new FormGroup({
@@ -53,23 +60,23 @@ export class ModaleComponent {
     this.loading = true;
     this.error = '';
 
-    this.livresService.rechercheLivreParIsbn(isbn).subscribe({
-      next: (livre) => {
-        // ✅ Données reçues, on remplit le formulaire
-        this.livre = livre;
-        this.form.patchValue({
-          titre: livre.titre,
-          auteur: livre.auteurs?.map(a => a.nomAuteur).join(', ') || ''
-        });
-        this.loading = false;
-      },
-      error: (err) => {
-        // ❌ Erreur
-        this.error = 'Livre non trouvé avec cet ISBN';
-        this.loading = false;
-        console.error('Erreur:', err);
-      }
-    });
+    this.livresService.rechercheLivreParIsbn(isbn)
+      .pipe(takeUntil(this.destroy))
+      .subscribe({
+        next: (livre) => {
+          this.livre = livre;
+          this.form.patchValue({
+            titre: livre.titre,
+            auteur: livre.auteurs?.map(a => a.nomAuteur).join(', ') || ''
+          });
+          this.loading = false;
+        },
+        error: (err) => {
+          this.error = 'Livre non trouvé avec cet ISBN';
+          this.loading = false;
+          console.error('Erreur:', err);
+        }
+      });
   }
 
   // Pour afficher dans le template
@@ -103,4 +110,8 @@ export class ModaleComponent {
     this.form.valid;
   }
 
+  ngOnDestroy() {
+    this.destroy.next();
+    this.destroy.complete();
+  }
 }

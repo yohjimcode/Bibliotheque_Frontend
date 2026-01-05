@@ -1,48 +1,8 @@
-h1{
-    margin: 50px 0;
-}
-
-.search {
+.livre-table{
   display: flex;
-  align-items: stretch;   /* bouton et input même hauteur */
   justify-content: center;
-  margin: 20px 0;           
-  color: white;
-  gap: 20px;
-}
-
-.search mat-form-field {
-  width: 800px;                
-}
-
-.button button {
-  height: 100%;   /* prend la même hauteur que mat-form-field */
-}
-
-.button{
-  display: flex;
-  justify-content: space-between;
-  padding-left: 20px;
-  height: 56px !important; 
-}
-
-.search mat-form-field {
-  width: 800px;                
-}
-
-.body {
-    color: white;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
-    margin: 20px;
-    overflow-y: auto;  
-    height: 80vh;
-}
-
-.livre {
-    border: 1px solid #ddd;
-    padding: 10px;
-    border-radius: 8px;
-    text-align: center;
+  align-items: center;
+  text-align: initial;
+  margin-top: 30rem;
+  width: 100%;
 }

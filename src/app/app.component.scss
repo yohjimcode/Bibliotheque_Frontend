@@ -27,6 +27,7 @@ header {
   background: rgba(0, 0, 0, 0.3);
   backdrop-filter: blur(10px);
   padding-top: 1rem;
+  //height: 64px; /* ou 72px selon ton design */
 }
 
 footer {
@@ -43,19 +44,32 @@ footer {
   align-items: center;
 }
 
-main {
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  position: relative;
-  z-index: 1; 
-  padding: 6rem 1rem 32px; /* Padding responsive */
+// main {
+//   height: 100vh;
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+//   text-align: center;
+//   position: relative;
+//   z-index: 1; 
+//   padding: 6rem 1rem 32px; /* Padding responsive */
 
   
-  /* Overlay pour améliorer la lisibilité du texte */
-  background-color: #000000; /* Fallback si l'image ne charge pas */
+//   /* Overlay pour améliorer la lisibilité du texte */
+//   background-color: #000000; /* Fallback si l'image ne charge pas */
+// }
+
+main {
+  min-height: 100vh;
+  padding: 6rem 1rem 32px;
+  background-color: #000;
+
+  position: relative;
+  z-index: 1;
+
+  // padding-top: calc(64px + 6rem);
+
+  padding : calc(64px + 6rem) 4rem 2rem;
 }
 
 /* Assurez le contraste pour l'accessibilité */
