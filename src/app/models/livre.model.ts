@@ -4,11 +4,11 @@ export interface Livre {
     auteurs: Auteur[];
     prix: number;
     dateCreation: Date;
-    isbn : string;
+    isbn: string;
 }
 
 export interface Auteur {
-    id?: number;
+    id: number;
     nomAuteur: string;
 }
 

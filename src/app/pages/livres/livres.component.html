@@ -32,7 +32,8 @@
       </td>
       <td>{{ livre.titre }}</td>
       @if(livre.auteurs?.length > 0){
-          <td>{{ livre.auteurs }}</td>
+          <td> {{ getNomsAuteurs(livre) }} </td>
+
       } @else { 
         <td> <i class="pi pi-spin pi-spinner"></i> </td>
       }
